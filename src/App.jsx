@@ -1,17 +1,20 @@
 import {useState,useContext,useLayoutEffect} from 'react';
-import { Spin } from 'antd';
+import { Spin, Tabs } from 'antd';
 import { getWeather, getForecast } from './api/openWeather';
 import moment from 'moment-timezone';
 import AppContext from './context/AppContext';
 import Card from './components/Card';
 import Header from './components/Header';
+import WeatherComparison from './components/WeatherComparison';
+import DetailedForecast from './components/DetailedForecast';
 
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { MdOutlineDateRange, MdOutlineAccessTime } from "react-icons/md";
-import { FiSunset, FiSunrise, FiBarChart2 } from "react-icons/fi";
+import { MdOutlineDateRange, MdOutlineAccessTime, MdCompare } from "react-icons/md";
+import { FiSunset, FiSunrise, FiBarChart2, FiCalendar } from "react-icons/fi";
 import { FaTemperatureEmpty, FaDroplet } from "react-icons/fa6";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { FaWind, FaCloud, FaGithub } from "react-icons/fa";
+import { TiWeatherPartlySunny } from "react-icons/ti";
 
 
 import useWindowSize from './hooks/useWindowSize';
@@ -58,6 +61,7 @@ const App = () => {
 	const [weatherData,setWeatherData] = useState(null);
 	const [forecast,setForecast] = useState(null);
 	const [loading,setLoading] = useState(false);
+	const [activeTab, setActiveTab] = useState('current');
 	const timeZone = moment.tz.guess();
 
 	// const [places,setPlaces] = useState(null);
@@ -82,10 +86,53 @@ const App = () => {
 		})()
 	},[location,unit])
 
+	const tabItems = [
+		{
+			key: 'current',
+			label: (
+				<span className='flex items-center gap-2 text-base px-2'>
+					<TiWeatherPartlySunny size={20} />
+					Current Weather
+				</span>
+			),
+		},
+		{
+			key: 'forecast',
+			label: (
+				<span className='flex items-center gap-2 text-base px-2'>
+					<FiCalendar size={20} />
+					7-Day Forecast
+				</span>
+			),
+		},
+		{
+			key: 'compare',
+			label: (
+				<span className='flex items-center gap-2 text-base px-2'>
+					<MdCompare size={20} />
+					Compare Cities
+				</span>
+			),
+		},
+	];
+
 	return (
 		<div className={`${theme=='dark' ? 'dark' : ''}`}>
 			<div className='transition-all duration-300 min-h-screen min-w-full bg-indigo-100 dark:bg-gray-900 text-black dark:text-white px-6 py-2 sm:px-10 sm:py-4 md:px-14 md:py-6 lg:px-20 lg:py-9 xl:px-24 xl:py-11'>
 				<Header/>
+				
+				{/* Tabs for switching between views */}
+				<div className='mb-6'>
+					<Tabs
+						activeKey={activeTab}
+						items={tabItems}
+						onChange={setActiveTab}
+						size='large'
+						className='weather-tabs'
+					/>
+				</div>
+
+				{activeTab === 'current' ? (
 				<Card>
 					{(!loading && weatherData && forecast?.list?.length>0) ? <div className='flex flex-col items-center justify-evenly gap-2 w-full'>
 						{/* conditional location header >=xl */}
@@ -198,6 +245,11 @@ const App = () => {
 					</div> : (loading ? <div className='flex items-center justify-center h-[50vh] w-full'><Spin size='large'/></div> : 
 					<div className='flex items-center justify-center h-[50vh] w-full'>Unable to fetch loaction info...</div>)}
 				</Card>
+				) : activeTab === 'forecast' ? (
+					<DetailedForecast theme={theme} />
+				) : (
+					<WeatherComparison theme={theme} />
+				)}
 			</div>
 		</div>
 	)
