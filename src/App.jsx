@@ -92,7 +92,7 @@ const App = () => {
 			label: (
 				<span className='flex items-center gap-2 text-base px-2'>
 					<TiWeatherPartlySunny size={20} />
-					Current Weather
+					Current
 				</span>
 			),
 		},

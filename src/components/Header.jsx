@@ -23,7 +23,7 @@ const Header = () => {
             <div className={`flex ${isMobile ? "flex-col gap-4" : "flex-row"} items-center justify-between w-full px-0 py-3`}>
                 <div className='flex items-center justify-evenly gap-1 rounded-[15px] hover:bg-white hover:shadow-lg dark:hover:bg-gray-700 hover:px-3 cursor-pointer transition-all duration-200' onClick={()=>setModalOpen(true)}>
                     <TiWeatherCloudy size={40}/>
-                    <div className='text-2xl'>Weather</div>
+                    <div className='text-2xl'>Mausam</div>
                     {!isMobile && <div className='text-lg ml-2 text-gray-500 dark:text-gray-400'>by Tanishka</div>}
                 </div>
                 <div className={`flex flex-col md:flex-row items-center w-4/5 md:w-3/5 lg:w-1/2 xl:w-2/5 justify-between md:justify-end gap-2`}>
@@ -89,7 +89,7 @@ const Header = () => {
                                 </div>
                             </div>
                             <p className='mt-4'>
-                                This weather application is built using React.js, Tailwind CSS and Ant Design.
+                                This Mausam application is built using React.js, Tailwind CSS and Ant Design.
                                 <br/>And is powered by OpenWeather + Geoapify APIs.
                             </p>
                             <div className='flex items-center justify-center gap-1'>
