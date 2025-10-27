@@ -1,0 +1,5 @@
+soThis project includes third-party components and dependencies. Those components are distributed under their own licenses (see `package-lock.json` and individual dependency metadata).
+
+Summary of dependency license types found in this repository's lockfile: MIT, ISC, BSD-3-Clause, Hippocratic-2.1, and others.
+
+If you include code from other projects in source files, keep the original copyright/license headers as required by the original license.

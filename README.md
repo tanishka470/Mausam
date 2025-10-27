@@ -1,39 +1,20 @@
 # Weather App 🌤️
 
-### A Beautiful Weather Application built with React.js, Tailwind CSS and Ant Design
+© 2025 Tanishka Sharma
 
-**Created by: Tanishka Sharma**
+Minimal, modern weather app built with React + Vite.
 
-## APIs used
-* OpenWeather: [https://openweathermap.org/api](https://openweathermap.org/api) (for Weather info)
-* Geoapify: [https://www.geoapify.com/geocoding-api](https://www.geoapify.com/geocoding-api) (for Geocoding)
+Key features
+- Weather Comparison: compare up to 4 cities with interactive Recharts visualizations (temp, feels-like, min/max, humidity, wind).
+- 7-Day Forecast: weekly trends + expandable daily panels with hourly breakdowns and charts.
+- Responsive UI with dark mode and thoughtful loading/empty states.
 
+Quick notes
+- Add these to a root `.env`: `VITE_GEOCODING_API_KEY`, `VITE_OPENWEATHER_API_KEY`.
+- Start dev server: `npm install && npm run dev`.
 
-## To run locally (must have Node.js and NPM installed)
-1. Clone this project on your local device & install necessary packages
-```
-git clone 'https://github.com/tanishka470/weather-AD.git'
-cd weather-AD
-npm i
-```
-2. Get your 'Openweather' and 'Geoapify' API keys, then create '.env' file & add your API keys there.
-```
-#inside .env file
+Roadmap (high level)
+- Weather alerts & notifications
+- Historical trends, weather map, favorites, PWA/offline support
 
-VITE_GEOCODING_API_KEY=""
-VITE_OPENWEATHER_API_KEY=""
-```
-3. Run the App
-```
-npm run dev
-```
-
-## Features
-* Most beautiful UI that I've ever made
-* Dark and Light modes
-* Responsive UI (looks good on all screen sizes)
-* Celsius and Fahrenheit Units
-* 5 Day Weather forecast 
-* Efficient API handeling
-* Industry standard code structure
 
